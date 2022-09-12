@@ -1,0 +1,28 @@
+//https://leetcode.com/problems/set-matrix-zeroes/
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int row_size=matrix.length;
+        int col_size=matrix[0].length;
+        int[][] copyMat=new int[row_size][col_size];
+        for(int row=0;row<row_size;row++){
+            for(int col=0;col<col_size;col++){
+                copyMat[row][col]=matrix[row][col];
+            }
+        }
+        for(int row=0;row<row_size;row++){
+            for(int col=0;col<col_size;col++){
+                if(copyMat[row][col]==0 && matrix[row][col]==copyMat[row][col]){
+                    for(int row_zero=0;row_zero<row_size;row_zero++){
+                        matrix[row_zero][col]=0;
+                        
+                    }
+                    for(int col_zero=0;col_zero<col_size;col_zero++){
+                        matrix[row][col_zero]=0;
+                    }
+                }
+            }
+        }
+        
+    }
+}
