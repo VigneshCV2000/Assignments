@@ -1,0 +1,33 @@
+//https://leetcode.com/problems/longest-consecutive-sequence/
+
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        if(nums.length==0|| nums.length==1){
+            return nums.length;
+        }
+        int count=1;
+        int max=Integer.MIN_VALUE;
+        HashSet<Integer> set=new HashSet<Integer>();
+        for(int index=0;index<nums.length;index++){
+            set.add(nums[index]);
+        }
+        for(int index=0;index<nums.length;index++){
+             
+           if(!set.contains(nums[index]-1)){
+               count=1;
+               int checkValue=nums[index];
+               while(set.contains(checkValue+1)){
+                checkValue++;
+                count++;
+                }  
+                
+            }
+             max=Math.max(count,max);
+        }
+           
+           
+        
+        return max;
+       
+    }
+}
