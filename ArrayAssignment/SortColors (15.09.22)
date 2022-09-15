@@ -1,0 +1,29 @@
+//https://leetcode.com/problems/sort-colors/
+
+class Solution {
+    public void sortColors(int[] nums) {
+        int st=0;
+        int count=0;
+        for(int ind=0;ind<nums.length;ind++){
+            if(nums[ind]==0){
+              swap(nums,ind,st);
+                ++st;
+                count++;
+            }
+        }
+       
+        for(int ind=st;ind<nums.length;ind++){
+            if(nums[ind]==1){
+                swap(nums,ind,st);
+                ++st;
+            }
+        }
+        
+    }
+     public void swap(int[] nums,int st,int last){
+        int temp=nums[st];
+        nums[st]=nums[last];
+        nums[last]=temp;
+    }
+   
+}
