@@ -1,0 +1,97 @@
+package com.practice;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class ForteReverseEngineering {
+
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		int[] questionArray=new int[5];
+		System.out.println("Enter the array elements :");
+		for(int index=0;index<5;index++) {
+			questionArray[index]=sc.nextInt();
+		}
+		
+		
+		ArrayList<Integer> additionArrayofFirstElement=new ArrayList<Integer>();	
+		ArrayList<Integer> additionArrayofSecondElement=new ArrayList<Integer>();	
+		ArrayList<Integer> additionArrayofThirdElement=new ArrayList<Integer>();	
+		
+		ArrayList<Integer> subtractionArrayofFirstElement=new ArrayList<Integer>();	
+		ArrayList<Integer> subtractionArrayofSecondElement=new ArrayList<Integer>();	
+		ArrayList<Integer> subtractionArrayofThirdElement=new ArrayList<Integer>();
+		
+		ArrayList<Integer> multiplicationArrayofFirstElement=new ArrayList<Integer>();	
+		ArrayList<Integer> multiplicationArrayofSecondElement=new ArrayList<Integer>();
+		ArrayList<Integer> multiplicationArrayofThirdElement=new ArrayList<Integer>();
+		
+		ArrayList<Integer> divisionArrayofFirstElement=new ArrayList<Integer>();
+		ArrayList<Integer> divisionArrayofSecondElement=new ArrayList<Integer>();
+		ArrayList<Integer> divisionArrayofThirsdElement=new ArrayList<Integer>();	
+		
+		int firstElementIndex=0;
+		int secondElementIndex=1;
+		int thirdElementIndex=2;
+		int ans=0;
+		
+		// First element  combinations of all the operands
+		
+		for(int index=1;index<4;index++) {
+			ans=questionArray[firstElementIndex]+questionArray[index];
+			additionArrayofFirstElement.add(ans);	
+			
+			ans=questionArray[firstElementIndex]-questionArray[index];
+			subtractionArrayofFirstElement.add(ans);
+			
+			ans=questionArray[firstElementIndex]*questionArray[index];
+			multiplicationArrayofFirstElement.add(ans);
+			
+			ans=questionArray[firstElementIndex]/questionArray[index];
+			divisionArrayofFirstElement.add(ans);
+		}
+		
+		//Second element combinations
+		
+		for(int index=2;index<4;index++) {
+			ans=questionArray[secondElementIndex]+questionArray[index];
+			additionArrayofSecondElement.add(ans);	
+			
+			ans=questionArray[firstElementIndex]-questionArray[index];
+			subtractionArrayofSecondElement.add(ans);	
+			
+			ans=questionArray[firstElementIndex]*questionArray[index];
+			multiplicationArrayofSecondElement.add(ans);	
+			
+			ans=questionArray[firstElementIndex]/questionArray[index];
+			divisionArrayofSecondElement.add(ans);	
+			
+		}
+			
+		// third element combinations
+		
+		for(int index=3;index<4;index++) {
+			ans=questionArray[thirdElementIndex]+questionArray[index];
+			additionArrayofThirdElement.add(ans);
+			
+			ans=questionArray[thirdElementIndex]-questionArray[index];
+			subtractionArrayofThirdElement.add(ans);	
+			
+			ans=questionArray[thirdElementIndex]*questionArray[index];
+			multiplicationArrayofThirdElement.add(ans);	
+			
+			ans=questionArray[thirdElementIndex]/questionArray[index];
+			divisionArrayofThirsdElement.add(ans);
+			
+		}
+		
+		int targetElement=questionArray[4];
+		
+		
+		
+		
+		
+	}
+}
