@@ -1,0 +1,33 @@
+package com.practice;
+
+import java.util.Scanner;
+
+public class StringRepeation {
+
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the string");
+		String input=new String();
+		StringBuilder resultString=new StringBuilder();
+		String store=new String();
+		input=sc.next();
+		String res=new String();
+		for(int index=0;index<input.length();index++) {
+			if((Character.isDigit(input.charAt(index)))) {
+				int digit=input.charAt(index)-48;
+				for(int count=0;count<digit;count++) {
+					resultString=resultString.append(store);
+				}
+				store=resultString.toString();
+			}
+			else {
+				resultString=resultString.append(input.charAt(index));
+				store=resultString.toString();
+			}
+			
+		}
+		System.out.println(resultString.toString());
+		
+		
+	}
+}
