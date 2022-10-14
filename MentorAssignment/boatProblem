@@ -1,0 +1,77 @@
+package com.practice;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class MinimumBoat {
+
+	public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the number of people : ");
+		int size=sc.nextInt();
+		System.out.println("Enter the weight limit: ");
+		int limit=sc.nextInt();
+		int[] people=new int[size];
+		System.out.println("Enter the person :");
+		for(int index=0;index<size;index++) {
+			people[index]=sc.nextInt();
+			System.out.println();
+		}
+		System.out.print("boat allocation : ");
+		Arrays.sort(people);
+		for(int ind=0;ind<size;ind++) {
+			System.out.println(people[ind]+" ");
+		}
+		int boatCount=0;
+		int end=size-1;
+		int start=0;
+		int sum=0;
+		while(start<=end) {
+			sum=people[start]+people[end];
+			if(people[end]==limit) {
+				end--;
+				boatCount++;
+			}
+			else if(sum<limit) {
+				start++;
+				end--;
+				while(sum<limit) {
+					sum+=people[++start];
+					if(sum==limit){
+						boatCount++;
+						break;
+					}
+					else if(sum>limit) {
+						start--;
+						boatCount++;
+						break;
+					}
+					
+				}
+			}
+			else if(sum>limit) {
+				end--;
+				while(sum<limit) {
+					sum+=people[++start];
+					if(sum==limit){
+						boatCount++;
+						break;
+					}
+					else if(sum>limit) {
+						start--;
+						boatCount++;
+						break;
+					}
+					
+				}
+			}
+			else if(sum==limit) {
+				boatCount++;
+				start++;
+				end--;
+			}
+			sum=0;
+		}
+		System.out.print("Boat count "+boatCount);
+	}
+}
