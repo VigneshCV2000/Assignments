@@ -1,0 +1,19 @@
+package stringpractice;
+
+import java.util.List;
+
+public class LongestCommonPrefix {
+
+	public static void main(String args[]) {
+		String[] s= {"technique", "technician", "technology", "technical"};
+		String prefix=s[0];
+		for(int index=1;index<s.length;index++) {
+			while(s[index].indexOf(prefix)!=0) {
+				prefix=prefix.substring(0, prefix.length()-1);
+			}
+		}
+		System.out.println(prefix);
+		
+	}
+}
+
