@@ -1,0 +1,71 @@
+ public static int alternate(String s) {
+    // Write your code here
+    // HashSet<Character> distinct=new HashSet<>();
+    if(s.length()<=1){
+        return 0;
+    }
+    ArrayList<Character> distinct=new ArrayList<>();
+    for(int index=0;index<s.length();index++){
+        if(!(distinct.contains(s.charAt(index)))){
+        distinct.add(s.charAt(index));    
+        }
+    }
+    if(distinct.size()<=1){
+        return 0;
+    }
+    int max=Integer.MIN_VALUE;
+    for(int i=0;i<distinct.size()-1;i++){
+        for(int j=i+1;j<distinct.size();j++){
+            char ch1=distinct.get(i);
+            char ch2=distinct.get(j);
+            String newStr=new String();
+            for(int l=0;l<s.length();l++){
+                if(s.charAt(l)==ch1 || s.charAt(l)==ch2){
+                    newStr=newStr+s.charAt(l);
+                }
+            }
+            int value=checkValid(ch1,ch2,newStr);
+            if(value>max){
+                max=value;
+            }
+            
+        }
+    }
+    
+    return max;
+    
+    
+    
+    }
+    
+    public static int checkValid(char ch1,char ch2,String str){
+        boolean flag=false;
+        
+       for(int i=0;i<str.length();i++){
+           if(i%2==0){
+               if(str.charAt(i)==ch1){
+                   flag=true;
+               }
+               else{
+                   flag=false;
+                   break;
+               }
+           }
+           else{
+               if(str.charAt(i)==ch2){
+                   flag=true;
+               }
+               else{
+                   flag=false;
+                   break;
+               }
+           }
+       }
+        if(flag==true){
+            return str.length();
+        }
+        else{
+            return 0;
+        }
+    }
+}
