@@ -1,0 +1,45 @@
+package stringpractice;
+
+public class CountStrings {
+	static String combinations;
+	static int count=0;
+	public static void main(String args[]) {
+		char[] arr= {'a','b','c'};
+		combinations="";
+		backtrack(arr,0,0);
+		System.out.println(count);
+	}
+	
+	public static void backtrack(char arr[],int bCount,int cCount) {
+		if(combinations.length()==3) {
+			System.out.println(combinations);
+			count++;
+			return;
+		}
+		
+		for(int i=0;i<3;i++) {
+			if(i==1 ) {
+				if(bCount>=1) {
+					continue;
+				}
+				else {
+					bCount++;
+				}
+			}
+			if(i==2) {
+				if(cCount>=2) {
+					continue;
+				}
+				else {
+					cCount++;
+				}
+			}
+			combinations+=arr[i];
+			backtrack(arr,bCount,cCount);
+			combinations=combinations.substring(0,combinations.length()-1);
+			if(i==1)bCount--;
+			if(i==2)cCount--;
+			
+		}
+	}
+}
